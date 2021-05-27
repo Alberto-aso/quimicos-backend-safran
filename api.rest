@@ -1,0 +1,55 @@
+//Realizar prueba de peticiones al backend//
+
+///////////////////////////  USUARIOS  ///////////////////////////
+
+
+//Obtener todos los Usuarios
+###
+GET  http://localhost:3000/api/usuarios
+
+//Obtener un solo Usuario
+###
+GET  http://localhost:3000/api/usuarios/60ad77692931564cb84db8e6
+
+//Crear nuevo usuario
+###
+POST http://localhost:3000/api/usuarios
+Content-Type: application/json
+
+{
+    "nombre": "alberto",
+    "apellido": "sanchez",
+    "password": "123",
+    "email": "Alejandra.Gonzalez"
+}
+
+//Actualizar usuario
+###
+PUT http://localhost:3000/api/usuarios/60ad77692931564cb84db8e6
+Content-Type: application/json
+
+{
+    "nombre": "Alberto",
+    "apellido": "Sanchez",
+    "email": "alberto.sanchez6",
+    "rol": "USER_ROLE",
+    "password": "123"
+}
+
+//Elminiar Usuario
+###
+DELETE http://localhost:3000/api/usuarios/60ad7f50464bc2407c63bbe2
+
+
+///////////////////////////  LOGIN  ///////////////////////////
+###
+POST http://localhost:3000/api/login
+Content-Type: application/json
+
+{
+    "email":"Alberto.Sanchez",
+    "password":"123"
+}
+
+
+///////////////////////////  QUIMICOS  ///////////////////////////
