@@ -9,6 +9,10 @@ app.use(express.json());//Configurar la aplicacion para que entienda objetos JSO
 
 //RUTAS
 app.use('/api/usuarios', require('./routes/usuarios.routes')); //Ruta Usuarios
-app.use('/api/login', require('./routes/auth.routes')); //Ruta Usuarios
+app.use('/api/quimicos', require('./routes/quimicos.routes')); //Ruta Quimicos
+app.use('/api/login', require('./routes/auth.routes')); //Ruta Login
+app.use('/api/areas', require('./routes/areas.routes')); //Ruta Area
+app.use('/api/nro-parte', require('./routes/nro-parte.routes')); //Ruta NroParte
+app.use('/api/bitacora', require('./routes/bitacora.routes')); //Ruta NroParte
 
 module.exports = app;  //Exportar app a index.js

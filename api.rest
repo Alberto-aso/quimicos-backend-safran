@@ -7,6 +7,7 @@
 ###
 GET  http://localhost:3000/api/usuarios
 
+
 //Obtener un solo Usuario
 ###
 GET  http://localhost:3000/api/usuarios/60ad77692931564cb84db8e6

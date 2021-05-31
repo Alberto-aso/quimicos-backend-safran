@@ -18,7 +18,7 @@ usuarioCtrl.getUsuarios = async (req, res = response) => {
             ok: true,
             msg: "Usuarios Registrados en DB",
             usuarios,
-            UsuarioLogin: req.uid
+            UsuarioLogin: req.uid //Mandas el usuario que esta logeado JWT
         });
     } catch (error) {
         console.log(error);
@@ -47,7 +47,7 @@ usuarioCtrl.getUsuario = async (req, res = response) => {
             ok: true,
             msg: "only one user",
             usuarioDB,
-            UsuarioLogin: req.uid
+            UsuarioLogin: req.uid //Mandas el usuario que esta logeado JWT
         });
     } catch (error) {
         res.status(500).json({
@@ -84,14 +84,14 @@ usuarioCtrl.postUsuario = async (req, res = response) => {
         await usuario.save(); //Guardar nuevo usuario en la base de datos
 
         //Generar Token - JWT
-        const token = await generarJWT(usuario._id); //Le mandamos el id del usuario
+        //const token = await generarJWT(usuario._id); //Le mandamos el id del usuario
 
         res.json({
             ok: true,
             msg: 'Usuario Creado',
             usuario,
-            token,
-            UsuarioLogin: req.uid
+            //token,
+            UsuarioLogin: req.uid //Mandas el usuario que esta logeado JWT
         });
 
     } catch (error) {
@@ -149,9 +149,8 @@ usuarioCtrl.putUsuario = async (req, res = response) => {
         res.json({
             ok: true,
             msg: "Actualizar usuario",
-            uid,
             usuario: usuarioActualizado,
-            UsuarioLogin: req.uid
+            UsuarioLogin: req.uid //Mandas el usuario que esta logeado JWT
         });
     } catch (error) {
         console.log(error);
@@ -184,7 +183,7 @@ usuarioCtrl.deleteUsuario = async (req, res = response) => {
             ok: true,
             msg: "Usuario Eliminando",
             usuarioDB,
-            UsuarioLogin: req.uid
+            UsuarioLogin: req.uid //Mandas el usuario que esta logeado JWT
         });
 
     } catch (error) {
