@@ -51,4 +51,26 @@ loginCtrl.login = async (req, res = response) => {
     }
 }// login controller
 
+loginCtrl.renewToken = async (req, res = response) => {
+
+    const uid = req.uid; //Recogemos el id el usuario autenticado
+    
+    
+    const usuario = await Usuario.findById(uid); //Obtener el usuario por ID
+
+    const token = await generarJWT(uid); //Le mandamos el id del usuario
+
+    try {
+        res.status(200).json({
+            ok: true,
+            msg: "Usuario autenticado",
+            token,
+            usuario
+        });
+    } catch (error) {
+
+    }
+
+};
+
 module.exports = loginCtrl;

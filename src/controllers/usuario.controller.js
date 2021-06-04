@@ -10,14 +10,21 @@ const usuarioCtrl = {}; //constante del controlador
 //Get usuarios
 usuarioCtrl.getUsuarios = async (req, res = response) => {
 
+    const desde = Number(req.query.desde) || 0; //Obtenemos el valor de la paginacion y lo comvertimos a numero si no igualamos a 0
+
     try {
-        //const usuarios = await Usuario.find(); Traer todos los datos
-        const usuarios = await Usuario.find({}, 'nombre apellido rol email'); //Traer datos especificos
+
+        const [usuarios, total] = await Promise.all([
+            Usuario.find({}, 'nombre apellido rol email')
+                .skip(desde).limit(5),
+            Usuario.countDocuments()
+        ]); //  Sustituye a dos funciones independientes y las hace simultaneas const total = await Usuario.count();
 
         res.status(200).json({
             ok: true,
             msg: "Usuarios Registrados en DB",
             usuarios,
+            total,
             UsuarioLogin: req.uid //Mandas el usuario que esta logeado JWT
         });
     } catch (error) {
